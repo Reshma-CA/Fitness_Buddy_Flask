@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{%  block title %} Home {% endblock %}
+
+
+{%  block content %} 
+
+<center>
+    <h3 style="text-align: center;">Welcome to Fitness Buddy!  </h3>
+    <h4 style="color:rgb(229, 44, 152);">Success isn’t always about greatness. It’s about consistency. Consistent hard work gains success. Greatness will come. </h4>
+    <img src= "{{ url_for('static', filename='images/pushups.jpg') }}" alt="pushup lady" height="200px" width="500px"
+</center>
+
+
+{% endblock %}
