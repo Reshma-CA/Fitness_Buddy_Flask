@@ -1,8 +1,22 @@
 {% extends "base.html" %}
 
+{% block title %} Profile {% endblock %}
 
-{%  block title %} Profile {% endblock %}
+{% block content %}
+<div style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
+    <h1 style="text-align: center; color: #4a4a4a; font-size: 36px; font-weight: bold;">
+        Welcome, {{ name }}
+    </h1>
 
-{%  block content %} <h1 style="text-align: center;">profile</h1> {% endblock %}
+    <button type="button" class="btn btn-info" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #17a2b8; color: white; border: none; cursor: pointer; transition: background-color 0.3s ease;">
+       hi
+    </button>
+</div>
 
-
+<style>
+    /* Button hover effect */
+    .btn-info:hover {
+        background-color: #138496; /* Slightly darker shade of info color */
+    }
+</style>
+{% endblock %}
