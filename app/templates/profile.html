@@ -3,20 +3,80 @@
 {% block title %} Profile {% endblock %}
 
 {% block content %}
-<div style="display: flex; flex-direction: column; align-items: center; margin-top: 50px;">
-    <h1 style="text-align: center; color: #4a4a4a; font-size: 36px; font-weight: bold;">
-        Welcome, {{ name }}
-    </h1>
+<div style="display: flex; justify-content: center; align-items: center; margin-top: 50px;">
+    <div style="background-color: #ffffff; padding: 30px 40px; border-radius: 15px; box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.15); width: 500px; text-align: center;">
+        
+        <!-- Profile Greeting -->
+        <h1 style="color: #333333; font-size: 36px; font-weight: bold; margin-bottom: 10px;">
+            Welcome, {{ name }}
+        </h1>
+        
+        <!-- Profile Subheading -->
+        <h4 style="color: #777777; font-size: 18px; font-weight: 500; margin-bottom: 30px;">
+            We're excited to have you back!
+        </h4>
+        
+        <!-- Profile Image -->
+        <div style="margin-bottom: 20px;">
+            <img src="{{ url_for('static', filename='images/profile.jpg') }}" alt="Profile Picture" style="width: 120px; height: 120px; border-radius: 50%; box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);">
+        </div>
 
-    <button type="button" class="btn btn-info" style="margin-top: 20px; padding: 10px 20px; font-size: 16px; border-radius: 5px; background-color: #17a2b8; color: white; border: none; cursor: pointer; transition: background-color 0.3s ease;">
-       hi
-    </button>
+        <!-- Description or User Bio -->
+        <p style="color: #555555; font-size: 16px; line-height: 1.5; margin-bottom: 30px;">
+            Here you can view your progress, check your tasks, and explore more features. Stay consistent, and keep pushing towards greatness!
+        </p>
+
+        <!-- Button to Explore More -->
+        <a href="{{ url_for('main.user_workouts') }}" class="btn btn-info" style="padding: 12px 30px; font-size: 16px; font-weight: bold; border-radius: 5px; background-color: #17a2b8; color: white; text-decoration: none; transition: 0.3s;">
+            Explore Your Workouts
+        </a>
+    </div>
 </div>
 
 <style>
-    /* Button hover effect */
+    body {
+        background-image: linear-gradient(to right, #76c893, #34a0a4); /* Gradient background */
+        font-family: Arial, sans-serif;
+        color: #333;
+        margin: 0;
+        padding: 0;
+    }
+
+    /* Hover effect for the button */
     .btn-info:hover {
-        background-color: #138496; /* Slightly darker shade of info color */
+        background-color: #138496;
+        border-color: #117a8b;
+        color: white;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        div[style*="background-color"] {
+            width: 90%;
+            padding: 20px 25px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        h4 {
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 14px;
+        }
+
+        img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .btn-info {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
     }
 </style>
 {% endblock %}

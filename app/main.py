@@ -38,8 +38,9 @@ def new_workout_post():
 @main.route('/all')
 @login_required
 def user_workouts():
+    page = request.args.get('page',1,type=int)
     user = User.query.filter_by(name = current_user.name).first_or_404()
-    workouts = user.workouts
+    workouts = Workout.query.filter_by(author=user).paginate(page = page,per_page = 3)
     return render_template('all_workouts.html', workouts = workouts,user=user)
 
 @main.route('/workout/<int:id>/update', methods = ['GET','POST'])
@@ -61,4 +62,5 @@ def delete_workout(id):
      workout = Workout.query.get_or_404(id)
      db.session.delete(workout)
      db.session.commit()
+     flash("your workout has been deleted")
      return redirect(url_for('main.user_workouts'))

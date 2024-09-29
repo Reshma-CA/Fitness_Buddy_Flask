@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for,flash
 from werkzeug.security import generate_password_hash, check_password_hash
 from .model import User
 from . import db
@@ -19,7 +19,7 @@ def signup_user():
 
     user = User.query.filter_by(name=name).first()
     if user:
-        print("User already exists")
+        flash("User already exists")
         return redirect(url_for('auth.signup'))
 
     new_user = User(
@@ -31,6 +31,7 @@ def signup_user():
     db.session.add(new_user)
     db.session.commit()
 
+    flash("Signup successful")
     return redirect(url_for('auth.login'))
 
 @auth.route('/login')
@@ -45,6 +46,7 @@ def handle_login():
     user = User.query.filter_by(name=name).first()
 
     if not user or not check_password_hash(user.password, password):
+        flash("Invalid credentials")
         return redirect(url_for('auth.login'))
     
     login_user(user)  # Log in the user
