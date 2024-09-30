@@ -4,5 +4,5 @@ from app import create_app  # Import the create_app function from your app packa
 app = create_app()
 
 # Run the app
-if __name__ == '__main__':
-    app.run(debug=True)
+# if __name__ == '__main__':
+#     app.run(debug=True)
