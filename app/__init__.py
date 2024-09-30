@@ -1,3 +1,5 @@
+
+import os
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy 
 from flask_login import LoginManager
@@ -10,7 +12,11 @@ def create_app():
 
     # Configuration
     app.config['SECRET_KEY'] = 'secret_key'
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' 
+    app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
+    print("Database URL:", os.environ.get('DATABASE_URL'))
+
+    # app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite' 
+    # postgresql://workoutapp_ilsk_user:m00vsFZ6cEA7dGButojbFN1oWOZCabAq@dpg-crt4o4t6l47c73d6n630-a.oregon-postgres.render.com/workoutapp_ilsk
 
     # Initialize the database
     db.init_app(app)

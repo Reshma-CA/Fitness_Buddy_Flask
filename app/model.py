@@ -6,8 +6,8 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     email = db.Column(db.String(100), unique=True)
-    password = db.Column(db.String(100))
-    repassword = db.Column(db.String(100))
+    password = db.Column(db.String(255))
+    repassword = db.Column(db.String(255))
     workouts = db.relationship('Workout', backref='author', lazy=True)  # Updated 'workout' to 'Workout'
 
 class Workout(db.Model):  # Updated class name to 'Workout' with capital W
